@@ -10,10 +10,25 @@ resource "aws_instance" "GithubActionsInstanz" {
   }
 }
 
+resource "aws_db_instance" "example" {
+  allocated_storage    = 20
+  engine               = "mysql"
+  instance_class       = "db.t3.micro"
+  db_name              = "mydb"
+  username             = var.db_username   # Using the variable for username
+  password             = var.db_password   # Using the variable for password
+  publicly_accessible  = true
+  skip_final_snapshot  = false
+  final_snapshot_identifier = "foo" # Ensure unique snapshot name
+}
 
-## terraform init
-## terraform plan
-## terraform apply
 
+variable "db_username" {
+  type      = string
+  sensitive = true
+}
 
-## terraform destroy
+variable "db_password" {
+  type      = string
+  sensitive = true
+}
