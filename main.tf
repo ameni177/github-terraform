@@ -19,7 +19,7 @@ resource "aws_db_instance" "example" {
   password             = var.db_password   # Using the variable for password
   publicly_accessible  = true
   skip_final_snapshot  = false
-  final_snapshot_identifier = "foo" # Ensure unique snapshot name
+  final_snapshot_identifier = "foo1" # Ensure unique snapshot name
 }
 
 
